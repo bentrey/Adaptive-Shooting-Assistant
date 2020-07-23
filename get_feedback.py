@@ -1,34 +1,38 @@
+import time
+from shared_variables import *
+
 def get_feedback():
-    global sound
-    global sound_lock
-    while True:
-        if sound == 1:
-            sound_lock.acquire()
+    global speaker
+    global speaker_lock
+    global continue_variable
+    while continue_variable:
+        if speaker == 1:
+            speaker_lock.acquire()
             os.system('omxplayer /sounds/connecting.mp3')
-            sound = 0
-            sound_lock.release()
-        elif  sound == 2:
+            speaker = 0
+            speaker_lock.release()
+        elif  speaker == 2:
             sound_lock.acquire()
             os.system('omxplayer /sounds/connected.mp3')
-            sound = 0
-            sound_lock.release()
-        elif  sound == 3:
-            sound_lock.acquire()
+            speaker = 0
+            speaker_lock.release()
+        elif  speaker == 3:
+            speaker_lock.acquire()
             os.system('omxplayer /sounds/followThrough.mp3')
-            sound = 0
-            sound_lock.release()
-        elif  sound == 4:
-            sound_lock.acquire()
+            speaker = 0
+            speaker_lock.release()
+        elif  speaker == 4:
+            speaker_lock.acquire()
             os.system('omxplayer /sounds/useYourLegs.mp3')
-            sound = 0
-            sound_lock.release()
-        elif  sound == 5:
-            sound_lock.acquire()
+            speaker = 0
+            speaker_lock.release()
+        elif  speaker == 5:
+            speaker_lock.acquire()
             os.system('omxplayer /sounds/shoot.mp3')
-            sound = 0
-            sound_lock.release()
+            speaker = 0
+            speaker_lock.release()
         time.sleep(0.1)
 
 def wait_for_speaker():
-    while sound != 0:
+    while speaker != 0:
         time.sleep(0.1)

@@ -1,3 +1,10 @@
+import time
+import pandas as pd
+
+from sklearn.linear_model import LogisticRegression
+
+from shared_variables import *
+
 def get_suggestion():
 
     global continue_variable
@@ -6,7 +13,7 @@ def get_suggestion():
     global motion_data
 
     while continue_variable:
-        if commnad == 2:
+        if command == 2:
             width = motion_data.shape()[1]
             rows = motion_data.shape()[0]
             followThroughIncrease = np.array((width-2)*[0])
@@ -25,7 +32,7 @@ def get_suggestion():
             clf = LogisticRegression().fit(X, y)
             last_values = motion_data.drop['make', 'suggestion'][[rows-1]]
             if clf.predict(last_values*followThroughIncrease) > \
-                clf.predict(last_values*useYourLegsIncrease)
+                clf.predict(last_values*useYourLegsIncrease):
                 speaker_lock.acquire()
                 speaker = 4
                 speaker_lock.release()

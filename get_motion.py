@@ -1,3 +1,20 @@
+import sys
+import os
+import time
+import datetime
+import click
+import pandas as pd
+from abc import abstractmethod
+from scipy.integrate import simps
+
+from blue_st_sdk.manager import Manager
+from blue_st_sdk.manager import ManagerListener
+from blue_st_sdk.node import NodeListener
+from blue_st_sdk.feature import FeatureListener
+from blue_st_sdk.features.audio.adpcm.feature_audio_adpcm import FeatureAudioADPCM
+
+from shared_variables import *
+
 data = ''
 
 #overload print
@@ -43,7 +60,7 @@ def get_motion():
     global command
     global command_lock
     global data
-    scaning_time_s = 3
+    scanning_time_s = 3
     devices = []
     connection_tries = 0
     current_row = [0]*24
@@ -78,8 +95,8 @@ def get_motion():
     while continue_variable:
         if command == 1:
             data = 0
-            acceleration_df = pd.DataFrame([],columns=['time','ax','ay','az'])
-            angular_speed_df = pd.DataFrame([],columns=['time','wx','wy','wz'])
+            acceleration_df = pd.DataFrame([],columns=['t','ax','ay','az'])
+            angular_speed_df = pd.DataFrame([],columns=['t','wx','wy','wz'])
             for index in feature_indices:
                 feature = features[index]
                 feature_listener = MyFeatureListener()
@@ -96,7 +113,7 @@ def get_motion():
             notifications = 0
             while notifications < 20:
                 if device.wait_for_notifications(0.05):
-                notifications += 1
+                    notifications += 1
 
             # Disabling notifications.
             device.disable_notifications(feature)
@@ -108,23 +125,23 @@ def get_motion():
                 #Accelerometer(51692): ( X: 25 mg    Y: -45 mg    Z: 1010 mg )
                 if 'Accelerometer' in line:
                     rows = acceleration_df.shape()[0]
-                    time = line.split(')')[0].split('(')[1]
+                    t = line.split(')')[0].split('(')[1]
                     values = line.split(' ')
-                    acceleration_df[rows] = [time, values[3], values[9],\
-                                            values[15]
+                    acceleration_df[rows] = [t, values[3], values[9],\
+                                            values[15]]
                 elif 'Gyroscope' in line:
                     rows = angular_speed_df.shape()[0]
-                    time = line.split(')')[0].split('(')[1]
+                    t = line.split(')')[0].split('(')[1]
                     values = line.split(' ')
-                    angular_speed_df[rows] = [time, values[3], values[9],\
+                    angular_speed_df[rows] = [t, values[3], values[9],\
                                             values[15]]
-                times = acceleration_df['time'].to_numpy()
+                ts = acceleration_df['time'].to_numpy()
                 axs = acceleration_df['ax'].to_numpy()
                 ays = acceleration_df['ay'].to_numpy()
                 azs = acceleration_df['az'].to_numpy()
-                int_ax = integrate.simps(axs, times)
-                int_ay = integrate.simps(ays, times)
-                int_az = integrate.simps(azs, times)
+                int_ax = integrate.simps(axs, ts)
+                int_ay = integrate.simps(ays, ts)
+                int_az = integrate.simps(azs, ts)
                 ax_max = max(axs)
                 ax_min = min(axs)
                 ay_max = max(ays)
