@@ -12,6 +12,13 @@ def get_suggestion():
     global command_lock
     global motion_data
 
+#To do
+#  Import data points in motion data
+#  Add quadratic terms
+#  Add more suggestions
+#  If there is lots of data use K-Means to get relavent data
+
+
     while continue_variable:
         if command == 2:
             width = motion_data.shape()[1]
