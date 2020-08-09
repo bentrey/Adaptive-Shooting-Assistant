@@ -38,9 +38,9 @@ found [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)
 
 ## Running the app
     
-    python main.py
+    *python main.py
 
 ## Demo files
-    <p><a href="https://drive.google.com/file/d/1BLYB_smpbtQDf8iJjJ7sQ1PaYV6JPUZh/view?usp=sharing"></a></p>
+    *[Device Demo]("https://drive.google.com/file/d/1BLYB_smpbtQDf8iJjJ7sQ1PaYV6JPUZh/view?usp=sharing")
     
     
