@@ -37,11 +37,11 @@ found [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)
 
 
 ## Running the app
-*For running the app
-  *python main.py
+* For running the app
+  * python main.py
 
 ## Demo files
-*App demo video
-  *[Device Demo](https://drive.google.com/file/d/1BLYB_smpbtQDf8iJjJ7sQ1PaYV6JPUZh/view?usp=sharing)
+* App demo video
+  * [Device Demo](https://drive.google.com/file/d/1BLYB_smpbtQDf8iJjJ7sQ1PaYV6JPUZh/view?usp=sharing)
     
     
