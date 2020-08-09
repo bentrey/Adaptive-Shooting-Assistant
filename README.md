@@ -37,17 +37,10 @@ found [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)
 
 
 ## Running the app
-Run the app from the bball_coach_app folder:
     
-    python main_ui.py
+    python main.py
 
 ## Demo files
-Try speech recognition running:
-
-    python speech/guess_game.py
-
-Try the text to speech by running:
-   
-    python speech/test_speak.py "hello world" "nice to meet you"
+    <p><a href="https://drive.google.com/file/d/1BLYB_smpbtQDf8iJjJ7sQ1PaYV6JPUZh/view?usp=sharing"></a></p>
     
     
