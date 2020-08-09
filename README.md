@@ -41,6 +41,6 @@ found [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)
     *python main.py
 
 ## Demo files
-    *[Device Demo]("https://drive.google.com/file/d/1BLYB_smpbtQDf8iJjJ7sQ1PaYV6JPUZh/view?usp=sharing")
+    *[Device Demo](https://drive.google.com/file/d/1BLYB_smpbtQDf8iJjJ7sQ1PaYV6JPUZh/view?usp=sharing)
     
     
