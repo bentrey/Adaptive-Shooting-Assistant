@@ -1,7 +1,7 @@
 # Adaptive Basketball Coach
 
-Utilizing motion sensing wearable technology, our application will train a 
-model on a basketball players specific motion characteristics and provide 
+Utilizing motion sensing wearable technology, our application trained a 
+model on a basketball player's specific motion characteristics and provided 
 feedback on a shot by shot basis.
 
 ## Installation requirements
